@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  bowling:
+    image: php:alpine
+    volumes:
+      - ./:/kata
+    working_dir: '/kata'
+    stdin_open: true
+    tty: true
+    command: 'php /kata/tests.php'
