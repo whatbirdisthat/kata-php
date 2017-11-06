@@ -7,6 +7,13 @@ $tests = [
   "Reports Zero score on init" => function() {
     $game = new BowlingGame();
     Assert::Equal(0, $game->score());
+  },
+  "Reports Gutter Game as 0" => function() {
+    $game = new BowlingGame();
+    for ($i = 0; $i < 20; $i++) {
+      $game->bowl(0);
+    }
+    Assert::Equal(0, $game->score());
   }
 ];
 
