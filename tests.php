@@ -46,6 +46,10 @@ $tests = [
       $game->bowl($b);
     }
     Assert::Equal(39, $game->score());
+  },
+  "Can report a perfect game" => function($game) {
+    bowlMany($game, 10, 12);
+    Assert::Equal(300, $game->score());
   }
 
 ];
