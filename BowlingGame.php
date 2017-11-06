@@ -12,9 +12,15 @@ class BowlingGame {
 
   function score() {
     $theScore = 0;
-    foreach ($this->bowls as $bowl) {
-      $theScore += $bowl;
+
+    for ($i = 0; $i < count($this->bowls); $i++) {
+      if ($i > 0 && $this->bowls[$i] + $this->bowls[$i-1] == 10) {
+        $theScore += $this->bowls[$i] + $this->bowls[$i+1];
+      } else {
+        $theScore += $this->bowls[$i];
+      }
     }
+
     return $theScore;
   }
 
