@@ -1,13 +1,30 @@
 <?php
 require "BowlingGame.php";
+require "Assert.php";
 
 print "Bowling Game Kata - Feature Report\n";
 
-function testZeroScoreOnInit() {
-  $game = new BowlingGame();
-  assert(0 == $game->score());
+$tests = [
+  "Zero Score on init" => function() {
+    $game = new BowlingGame();
+    Assert::Equal(1, $game->score());
+  }
+];
+
+print "\n";
+
+foreach ($tests as $testName => $test) {
+  $testResult = "\033[32m\u{2713}\033[0m";
+  $testMessage = "";
+  try {
+    $test();
+  } catch (Exception $r) {
+    $testResult = "\033[31m\u{2717}\033[0m";
+    $testMessage = "(" . $r->getMessage() . ")";
+  }
+  print "$testResult - $testName $testMessage";
 }
 
-testZeroScoreOnInit();
+print "\n\n";
 
 ?>
