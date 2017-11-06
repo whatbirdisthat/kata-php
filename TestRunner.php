@@ -2,7 +2,7 @@
 
 class TestRunner {
 
-  public static function RunTests($title, $tests) {
+  public static function RunTests($title, $tests, $setupFunc) {
 
     $passed = 0;
     $failed = 0;
@@ -13,7 +13,8 @@ class TestRunner {
       $testResult = "\033[32m\u{2713}\033[0m";
       $testMessage = "";
       try {
-        $test();
+        $ObjectUnderTest = $setupFunc();
+        $test($ObjectUnderTest);
         $passed++;
       } catch (Exception $r) {
         $failed++;
