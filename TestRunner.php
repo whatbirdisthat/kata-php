@@ -4,6 +4,8 @@ class TestRunner {
 
   public static function RunTests($title, $tests, $setupFunc) {
 
+    $startTime = microtime(true)*1000;
+
     $passed = 0;
     $failed = 0;
 
@@ -24,7 +26,8 @@ class TestRunner {
       print "$testResult - $testName $testMessage\n";
     }
 
-    print "\n$passed Passed, $failed Failed\n";
+    $duration = round((microtime(true)*1000) - $startTime, 2);
+    print "\n$passed Passed, $failed Failed (${duration}ms)\n";
 
   }
 }
