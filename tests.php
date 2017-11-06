@@ -32,6 +32,13 @@ $tests = [
     $game->bowl(3);
     bowlMany($game, 0, 17);
     Assert::Equal(16, $game->score());
+  },
+  "Can report two spares in a full game" => function($game) {
+    $gameBowls =[3,5,4,6,2,7,5,3,1,1,6,1,0,4,0,0,3,6,5,0];
+    foreach ($gameBowls as $b) {
+      $game->bowl($b);
+    }
+    Assert::Equal(64, $game->score());
   }
 
 ];
