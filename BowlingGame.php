@@ -2,14 +2,20 @@
 
 class BowlingGame {
 
-  public $theScore = 0;
+  private $bowls = [];
+  private $bowlCount = 0;
 
   function bowl($pins) {
-    $this->theScore += $pins;
+    $this->bowls[$this->bowlCount] = $pins;
+    $this->bowlCount++;
   }
 
   function score() {
-    return $this->theScore;
+    $theScore = 0;
+    foreach ($this->bowls as $bowl) {
+      $theScore += $bowl;
+    }
+    return $theScore;
   }
 
 }
