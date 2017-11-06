@@ -14,6 +14,11 @@ $tests = [
       $game->bowl(0);
     }
     Assert::Equal(0, $game->score());
+  },
+  "Reports single pin game as 1" => function() {
+    $game = new BowlingGame();
+    $game->bowl(1);
+    Assert::Equal(1, $game->score());
   }
 ];
 
