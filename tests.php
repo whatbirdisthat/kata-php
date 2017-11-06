@@ -39,6 +39,13 @@ $tests = [
       $game->bowl($b);
     }
     Assert::Equal(64, $game->score());
+  },
+  "Can report one strike and some one-pin bowls" => function($game) {
+    $gameBowls = [0,1,10,2,3,5,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    foreach ($gameBowls as $b) {
+      $game->bowl($b);
+    }
+    Assert::Equal(39, $game->score());
   }
 
 ];
